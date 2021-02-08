@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 function Header() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-3">
             <div className="container">
                 <Link className="navbar-brand"  to="/">
                     Navbar
@@ -29,8 +29,8 @@ function Header() {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact">
-                                Contact
+                            <Link className="nav-link" to="/project">
+                                Project
                             </Link>
                         </li>
                         <li className="nav-item">
