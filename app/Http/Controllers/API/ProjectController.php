@@ -28,7 +28,8 @@ class ProjectController extends Controller
     }
     public function projecWithTask($id)
     {
-        $data=Project::with('tasks')->find($id);
+      return  $data=Project::with('tasks')->find($id);
+    //   return response()->json($data);
         return response()->json([
             'success'=>true,
             'msg'=>'Project with task',
@@ -40,7 +41,7 @@ class ProjectController extends Controller
         $validator = Validator::make(Request::all(), [
             'name'            => 'required|string',
             'description'            => 'required|string',
-            // 'user'            => 'required',
+            // 'user'=>['required',Rule::exists('users','id')],
         ]);
        
         if ($validator->fails()) {
@@ -61,29 +62,27 @@ class ProjectController extends Controller
             'data'=>$project,
         ]);
     }
-    public function edit( $id)
+    public function edit($id)
     {
         $item=Project::find($id);
         return response()->json([
             'success'=>true,
-            'msg'=>'Project deleted.',
             'data'=>$item
         ]);
     }
-    public function update( $id)
+    public function update($id)
     {
-        
+        $project=Project::find($id);
         $validator=Validator::make(Request::all(), [
             'name'=>['required','string'],
             'description'=>['required','string'],
-            'user'=>['required',Rule::exists('users','id')],
+            // 'user'=>['required',Rule::exists('users','id')],
         ]);
         if ($validator->fails()) {
             return response([
                         'error'=>$validator->errors()
                     ], 400);
         }
-        $project=Project::find($id);
         $project->name=Request::get('name');
         $project->description=Request::get('description');
         $project->status=Request::get('status');

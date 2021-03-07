@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/user', [App\Http\Controllers\API\UserrController::class, 'index'])->middleware('auth:api');
 //projects   
 Route::get('project',[App\Http\Controllers\API\ProjectController::class, 'index']);
-Route::get('project/{item}/',[App\Http\Controllers\API\ProjectController::class, 'projecWithTask']);
+Route::get('project/{item}/view',[App\Http\Controllers\API\ProjectController::class, 'projecWithTask']);
 Route::get('project/create',[App\Http\Controllers\API\ProjectController::class, 'create']);
 Route::post('project/store',[App\Http\Controllers\API\ProjectController::class, 'store']);
 Route::get('project/{item}/edit',[App\Http\Controllers\API\ProjectController::class, 'edit']);
